@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_filters %}
+<title>{% block title %}Employee Registration{% endblock %}</title>
+<section id="todo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center display-4">Employee Registration</h1>
+            </div>
+            <div class="col-md-12">
+                <form action="{% url 'post' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy}}
+                    <input type="submit" class="btn btn-info btn-block" value="submit"> 
+                </form>
+            </div>    
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+

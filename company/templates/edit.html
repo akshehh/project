@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_filters %}
+<title>Update Employee Info</title>
+<section id="todo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center display-4">Update Employee Info</h1>
+            </div>
+            <div class="col-md-12">
+                <form action="{% url 'update' data.id %}" method="POST">
+                    {% csrf_token %}
+                        {{form|crispy}}
+                        <input type="submit" class="btn btn-success btn-block" value="submit">      
+                </form>
+            </div>    
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+

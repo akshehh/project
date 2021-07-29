@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% block content%}
+{% load crispy_forms_filters %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center display-4">Employee Info</h1>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-hover">  
+                <tbody>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.email}}</td>
+                        <form action="{% url 'getId' i.id %}" method="POST" class="d-inline">{% csrf_token %}
+                        <td> <input type="submit" class="btn btn-warning btn-sm" value="edit"></form>
+
+                        <form action="{% url 'delete' i.id %}" method="POST" class="d-inline">{% csrf_token %}
+                        <input type="submit" class="btn btn-danger btn-sm" value="delete"></td></form>
+                    </tr>
+                
+                       {% endfor %}
+                      </tbody>
+                  </table>
+                  
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
